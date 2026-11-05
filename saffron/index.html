@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Eyed Spirits</title>
+<meta name="description" content="Amaro and akvavit from Rhode Island. Double Gold, 2026 San Francisco World Spirits Competition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IM+Fell+English:ital@1&display=swap">
+<style>
+/* Direction C, "Saffron": modern and bright. Each bottle owns a full color band (saffron, carmine, akvavit frost). Big grotesk type, plain white everywhere else. */
+:root {
+  --white: #ffffff;
+  --ink: #1d1612;
+  --muted: #6b605a;
+  --saffron: #f0a51c;
+  --carmine: #b5323a;
+  --frost: #e3ece9;
+  --line: #ece6e1;
+  --display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --gate-bg: var(--saffron); --gate-fg: var(--ink); --gate-accent: var(--ink); --gate-font: var(--display);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--white); color: var(--ink); font: 17px/1.6 var(--body); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); line-height: .95; margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+.kicker { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+nav .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 1.15rem; letter-spacing: -.01em; }
+nav .brand re-logo { width: 38px; color: var(--carmine); }
+nav ul { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
+nav ul a { text-decoration: none; font-weight: 500; font-size: .92rem; padding: 8px 14px; border-radius: 99px; }
+nav ul a:hover { background: var(--frost); }
+nav ul li:last-child a { background: var(--ink); color: var(--white); }
+@media (max-width: 640px) { nav ul li:not(:last-child) { display: none; } }
+
+/* hero */
+.hero .wrap { padding-block: 48px 64px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end; }
+.hero h1 { font-size: clamp(3.2rem, 10.5vw, 9.5rem); font-weight: 800; }
+.hero h1 span { color: var(--saffron); }
+.hero p { font-size: 1.2rem; max-width: 40ch; margin: 28px 0 0; color: var(--muted); }
+.stamp { width: 190px; height: 190px; border-radius: 50%; background: var(--saffron); display: grid; place-items: center; text-align: center; transform: rotate(-8deg); padding: 20px; }
+.stamp b { display: block; font-family: var(--display); font-size: 2.3rem; line-height: .9; font-weight: 800; }
+.stamp small { display: block; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-top: 8px; line-height: 1.3; }
+@media (max-width: 760px) { .hero .wrap { grid-template-columns: 1fr; } .stamp { width: 150px; height: 150px; justify-self: end; margin-top: -10px; } .stamp b { font-size: 1.8rem; } }
+
+/* bands */
+.band { padding-block: 72px; }
+.band .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.band.flip .wrap > re-bottle { order: -1; }
+.band.flip .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+.band re-bottle { width: min(200px, 50vw); justify-self: center; transform: rotate(4deg); }
+.band.flip re-bottle { transform: rotate(-4deg); }
+.band h2 { font-size: clamp(2.6rem, 7vw, 5.6rem); font-weight: 800; margin-block: 12px 18px; }
+.band p { font-size: 1.12rem; max-width: 44ch; margin: 0; }
+.pill { display: inline-block; padding: 6px 14px; border-radius: 99px; border: 1.5px solid currentColor; font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.saffron { background: var(--saffron); color: var(--ink); }
+.carmine { background: var(--carmine); color: var(--white); }
+.frost { background: var(--frost); color: var(--ink); }
+@media (max-width: 760px) { .band .wrap, .band.flip .wrap { grid-template-columns: 1fr; gap: 28px; } .band.flip .wrap > re-bottle { order: 0; } .band re-bottle { width: 140px; } }
+
+/* about + news */
+section { padding-block: 96px; }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
+.about h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; }
+.about p { margin: 0 0 16px; font-size: 1.1rem; color: var(--muted); max-width: 48ch; }
+.news { display: grid; gap: 14px; }
+.news article { border: 1.5px solid var(--line); border-radius: 18px; padding: 24px 26px; display: grid; gap: 8px; }
+.news time { font-size: .8rem; font-weight: 600; color: var(--carmine); letter-spacing: .06em; text-transform: uppercase; }
+.news h3 { font-size: 1.55rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.1; }
+.news p { margin: 0; color: var(--muted); }
+@media (max-width: 800px) { .split { grid-template-columns: 1fr; gap: 40px; } }
+
+/* contact */
+.contact { background: var(--ink); color: var(--white); }
+.contact h2 { font-size: clamp(2.8rem, 7vw, 5.4rem); font-weight: 800; }
+.contact h2 span { color: var(--saffron); }
+.contact .lead { color: #c9c0b8; font-size: 1.1rem; max-width: 40ch; margin: 20px 0 0; }
+.contact .lead a { color: var(--saffron); }
+form { display: grid; gap: 14px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { display: grid; gap: 6px; font-size: .85rem; font-weight: 500; color: #c9c0b8; }
+input, select, textarea { font: inherit; font-size: 1rem; color: var(--white); background: #2b231e; border: 1.5px solid #3b322c; border-radius: 12px; padding: 13px 15px; width: 100%; }
+select option { background: var(--ink); }
+input:focus, select:focus, textarea:focus { border-color: var(--saffron); outline: none; }
+textarea { min-height: 140px; resize: vertical; }
+.btn { font: 600 1rem var(--body); background: var(--saffron); color: var(--ink); border: 0; border-radius: 99px; padding: 15px 30px; cursor: pointer; justify-self: start; }
+.btn:hover { background: var(--white); }
+[data-status] { margin: 0; min-height: 1.6em; color: var(--saffron); }
+@media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+
+footer { background: var(--ink); color: #9b918a; font-size: .85rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 28px; border-top: 1px solid #3b322c; }
+</style>
+</head>
+<body>
+<re-agegate></re-agegate>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><re-logo plain></re-logo>Red Eyed Spirits</a>
+    <ul>
+      <li><a href="#spirits">Spirits</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Amaro + akvavit · Rhode Island</div>
+      <h1>Small state.<br><span>Big gold.</span></h1>
+      <p>We make botanical spirits in the smallest state, and they're winning in San Francisco.</p>
+    </div>
+    <div class="stamp" aria-label="Double Gold, San Francisco World Spirits Competition 2026"><div><b>Double Gold</b><small>SF World Spirits<br>Competition 2026</small></div></div>
+  </div>
+</header>
+
+<div id="spirits">
+  <section class="band saffron">
+    <div class="wrap">
+      <div>
+        <span class="pill">Double Gold · SFWSC 2026</span>
+        <h2>Saffron Rabarbaro Amaro</h2>
+        <p>Rhubarb amaro lit up with saffron. Earthy and bitter up front, golden and warm on the finish. Also a Best in Class finalist for Botanical Liqueurs at Top Shelf 2026.</p>
+      </div>
+      <re-bottle variant="saffron"></re-bottle>
+    </div>
+  </section>
+  <section class="band carmine flip">
+    <div class="wrap">
+      <re-bottle variant="carminio"></re-bottle>
+      <div>
+        <span class="pill">Medal winner</span>
+        <h2>Amaro Carminio</h2>
+        <p>Our ruby red amaro. Bright, bittersweet, and easy to pour over ice.</p>
+      </div>
+    </div>
+  </section>
+  <section class="band frost">
+    <div class="wrap">
+      <div>
+        <span class="pill">Medal winner</span>
+        <h2>Taffel Akvavit</h2>
+        <p>Clear, unaged Scandinavian table akvavit, made in Rhode Island. Serve it ice cold.</p>
+      </div>
+      <re-bottle variant="akvavit"></re-bottle>
+    </div>
+  </section>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap split">
+    <div>
+      <div class="kicker" style="color:var(--carmine)">Local alchemy</div>
+      <h2 style="margin-block:12px 22px">Roots, flowers and spice, done slowly.</h2>
+      <p>Red Eyed Spirits makes amaro and akvavit in Rhode Island. Small batches, real botanicals, nothing rushed.</p>
+    </div>
+    <div class="news">
+      <article><time datetime="2026-11-08">Nov 8, 2026</time><h3>Top Shelf Awards Gala, San Francisco</h3><p>Best in Class finalist for Botanical Liqueurs. Rhode Island, representing at Hotel Nikko.</p></article>
+      <article><time datetime="2026-07-02">Jul 2, 2026</time><h3>Gold, Silver &amp; Spirits</h3><p>A medal-winning tasting flight with RI Spirits at The Rhodium Room, Pawtucket.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap split">
+    <div>
+      <h2>Let's <span>talk.</span></h2>
+      <p class="lead">Want us on your shelf or your menu? Planning an event? Writing about us? Send a note, or DM <a href="https://www.instagram.com/redeyedspirits/" target="_blank" rel="noopener">@redeyedspirits</a>.</p>
+    </div>
+    <form data-contact>
+      <div class="row">
+        <label for="c-name">Name<input id="c-name" name="name" required autocomplete="name"></label>
+        <label for="c-email">Email<input id="c-email" name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <label for="c-topic">Topic
+        <select id="c-topic" name="topic">
+          <option>General question</option>
+          <option>Carrying our bottles (bars and shops)</option>
+          <option>Distribution</option>
+          <option>Events</option>
+          <option>Press</option>
+        </select>
+      </label>
+      <label for="c-msg">Message<textarea id="c-msg" name="message" required></textarea></label>
+      <button class="btn" type="submit">Send it</button>
+      <p data-status aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Red Eyed Spirits · Rhode Island</span><span>Enjoy responsibly. 21+.</span></div>
+</footer>
+
+<script src="../shared.js"></script>
+</body>
+</html>

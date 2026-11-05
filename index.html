@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Eyed Spirits</title>
+<meta name="robots" content="noindex">
+<style>
+:root { --bg: #fffdfa; --ink: #2a1a16; --muted: #6e5a52; --red: #c23a2b; --line: #e6d9cc; color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 56px max(20px, env(safe-area-inset-right, 0px)) 56px max(20px, env(safe-area-inset-left, 0px)); }
+re-logo { width: 120px; display: block; color: var(--red); }
+h1 { font: 400 2.4rem/1.1 Georgia, serif; margin: 20px 0 8px; }
+p { color: var(--muted); margin: 0 0 32px; }
+ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+a { display: grid; grid-template-columns: 40px 1fr; gap: 4px 16px; padding: 20px 22px; border: 1px solid var(--line); text-decoration: none; color: inherit; }
+a:hover, a:focus-visible { border-color: var(--red); outline: none; }
+a b { font: 400 1.5rem Georgia, serif; color: var(--red); grid-row: span 2; }
+a span { color: var(--muted); font-size: .95rem; }
+</style>
+</head>
+<body>
+<main>
+  <re-logo></re-logo>
+  <h1>Red Eyed Spirits: three directions</h1>
+  <p>Pick one and it becomes the homepage. Same content and contact form on all three.</p>
+  <ol>
+    <li><a href="apothecary/?nogate"><b>A</b><strong>Apothecary</strong><span>White label paper, red ink, the crest front and center. Closest to the current logo.</span></a></li>
+    <li><a href="gala/?nogate"><b>B</b><strong>Gala</strong><span>Black and gold like the Saffron label. Big serif, awards up front.</span></a></li>
+    <li><a href="saffron/?nogate"><b>C</b><strong>Saffron</strong><span>Bright and modern. Each bottle gets its own color band.</span></a></li>
+  </ol>
+</main>
+<script src="shared.js"></script>
+</body>
+</html>
