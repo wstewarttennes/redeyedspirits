@@ -40,7 +40,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; marg
 .hero { background: var(--red); position: relative; overflow: hidden; }
 .hero nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; }
 .hero nav .brand { display: flex; align-items: center; gap: 12px; color: var(--bone); text-decoration: none; font-family: var(--display); font-size: 1.15rem; }
-.hero nav .brand re-logo { width: 38px; color: var(--gold); }
+.hero nav .brand re-logo { width: 84px; color: var(--gold); }
 .hero nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: .76rem; letter-spacing: .22em; text-transform: uppercase; }
 .hero nav ul a { color: var(--bone); opacity: .75; text-decoration: none; }
 .hero nav ul a:hover { opacity: 1; color: var(--gold); }
@@ -81,7 +81,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; marg
 .spread.flip > .photo { order: 2; }
 .spread .photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .arch { border: 1px solid var(--gold); outline: 1px solid var(--gold-soft); outline-offset: 6px; border-radius: 999px 999px 0 0; padding: 72px 36px 36px; text-align: center; display: grid; justify-items: center; gap: 10px; max-width: 440px; margin-inline: auto; }
-.arch re-logo { width: 54px; color: var(--gold); }
+.arch re-logo { width: 116px; color: var(--gold); margin-bottom: 6px; }
 .arch .medal { font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
 .arch h3 { font-size: clamp(2rem, 3.6vw, 2.7rem); line-height: 1.05; }
 .arch .style { font-family: var(--display); font-style: italic; color: var(--dim); margin: 0; }
@@ -165,7 +165,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <header class="hero" id="top">
   <div class="wrap">
     <nav>
-      <a class="brand" href="#top"><re-logo plain></re-logo>Red Eyed Spirits</a>
+      <a class="brand" href="#top" aria-label="Red Eyed Spirits, home"><re-logo></re-logo></a>
       <ul>
         <li><a href="#spirits">Spirits</a></li>
         <li><a href="#makers">Founders</a></li>
@@ -199,8 +199,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>Saffron</span><span>Rhubarb root</span><span>Wormwood</span><span>Cherry bark</span><span>Kola nut</span><span>Grains of paradise</span><span>Ginseng</span><span>Bitter orange</span><span>Cochineal</span><span>Local honey</span><span>Caraway</span><span>Dill</span><span>Pink peppercorn</span><span>Fennel</span><span>Anise</span><span>Clementine</span><span>Coriander</span><span>Lavender</span><span>White Cap Flint Corn</span>
-    <span>Saffron</span><span>Rhubarb root</span><span>Wormwood</span><span>Cherry bark</span><span>Kola nut</span><span>Grains of paradise</span><span>Ginseng</span><span>Bitter orange</span><span>Cochineal</span><span>Local honey</span><span>Caraway</span><span>Dill</span><span>Pink peppercorn</span><span>Fennel</span><span>Anise</span><span>Clementine</span><span>Coriander</span><span>Lavender</span><span>White Cap Flint Corn</span>
+    <span>Saffron</span><span>Chinese rhubarb</span><span>Wormwood</span><span>Cherry bark</span><span>Kola nut</span><span>Grains of paradise</span><span>Ginseng</span><span>Bitter orange</span><span>Cochineal</span><span>Local honey</span><span>Caraway</span><span>Dill</span><span>Pink peppercorn</span><span>Fennel</span><span>Anise</span><span>Clementine</span><span>Coriander</span><span>Lavender</span><span>White Cap Flint Corn</span>
+    <span>Saffron</span><span>Chinese rhubarb</span><span>Wormwood</span><span>Cherry bark</span><span>Kola nut</span><span>Grains of paradise</span><span>Ginseng</span><span>Bitter orange</span><span>Cochineal</span><span>Local honey</span><span>Caraway</span><span>Dill</span><span>Pink peppercorn</span><span>Fennel</span><span>Anise</span><span>Clementine</span><span>Coriander</span><span>Lavender</span><span>White Cap Flint Corn</span>
   </div>
 </div>
 
@@ -215,11 +215,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="photo"><img src="../photos/web/lineup.jpg" alt="Amaro Caramino, Taffel Akvavit and Saffron Rabarbaro Amaro side by side" loading="lazy" width="921" height="1152"></div>
       <div>
         <div class="arch">
-          <re-logo plain></re-logo>
+          <re-logo></re-logo>
           <span class="medal">Double Gold · Flagship</span>
           <h3>Saffron Rabarbaro Amaro</h3>
           <p class="style">A modern twist on a Bolognese-style amaro</p>
-          <ul class="botanicals"><li>Saffron</li><li>Rhubarb root</li><li>Botanicals from Hawk and Handsaw Farm, Portsmouth RI</li></ul>
+          <ul class="botanicals"><li>Saffron</li><li>Chinese rhubarb</li><li>Bitter orange</li><li>Botanicals from Hawk and Handsaw Farm, Portsmouth RI</li></ul>
           <div class="score">99<small>points · SFWSC 2026</small></div>
         </div>
         <blockquote>"Vibrant aromas of saffron and fresh herbs... a refreshing minty lift, delicate bitterness, and lingering saffron that ties the flavors together with impressive depth and elegance."<cite>2026 Tasting Alliance judge</cite></blockquote>
@@ -230,7 +230,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="photo"><img src="../photos/web/caramino.jpg" alt="Amaro Caramino with a cocktail" loading="lazy" width="1151" height="2046"></div>
       <div>
         <div class="arch">
-          <re-logo plain></re-logo>
+          <re-logo></re-logo>
           <span class="medal">Silver</span>
           <h3>Amaro Caramino</h3>
           <p class="style">A Milanese-style amaro, made to centuries-old tradition</p>
@@ -245,7 +245,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="photo"><img src="../photos/web/akvavit.jpg" alt="Taffel Akvavit with a red cocktail" loading="lazy" width="1638" height="2048"></div>
       <div>
         <div class="arch">
-          <re-logo plain></re-logo>
+          <re-logo></re-logo>
           <span class="medal">Silver</span>
           <h3>Taffel Akvavit</h3>
           <p class="style">An unaged caraway spirit in the traditional Danish style</p>
@@ -281,7 +281,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p>Restaurant and bar industry veteran with deep hospitality connections across Rhode Island, and a molecular biology PhD candidate at Brown.</p>
         <h4>Grown nearby, poured nearby</h4>
         <p>We source from our friends at New England farms, like local botanicals from Hawk and Handsaw Farm in Portsmouth and White Cap Flint Corn, Rhode Island's official state corn. Then we get it into the cocktail programs that care where things come from.</p>
-        <img class="wide" src="../photos/web/corn.jpg" alt="White Cap Flint Corn in the field" loading="lazy" width="1200" height="1600">
+        <img class="wide" src="../photos/web/garden.jpg" alt="A trellis tunnel of climbing plants at a New England farm" loading="lazy" width="1200" height="1600">
       </div>
     </div>
   </div>
