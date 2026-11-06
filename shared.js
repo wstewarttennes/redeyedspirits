@@ -8,7 +8,7 @@ window.RE_CONFIG = {
   // formspree.io form id (free tier works on GitHub Pages). e.g. 'xyzabcd'
   formspreeId: '',
   // fallback: if no formspree id, the form opens an email to this address
-  email: '',
+  email: 'joey@redeyedspirits.co',
   instagram: 'https://www.instagram.com/redeyedspirits/',
 };
 
