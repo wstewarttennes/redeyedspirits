@@ -123,18 +123,16 @@ nav ul a:hover { color: var(--gold); }
 
 /* contact */
 .contact { background: var(--black-2); }
-.contact .wrap { max-width: 760px; }
+.contact .wrap { max-width: 860px; }
 .contact .intro { margin-bottom: 44px; }
-form { display: grid; gap: 22px; }
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-label { display: grid; gap: 8px; font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); }
-input, select, textarea { font: 300 1.05rem var(--body); letter-spacing: 0; text-transform: none; color: var(--bone); background: transparent; border: 0; border-bottom: 1px solid var(--gold-soft); padding: 10px 2px; border-radius: 0; width: 100%; }
-select option { background: var(--black); }
-textarea { min-height: 130px; resize: vertical; }
-input:focus, select:focus, textarea:focus { border-bottom-color: var(--gold); outline: none; }
-.send { display: flex; justify-content: center; }
-[data-status] { margin: 0; min-height: 1.6em; text-align: center; color: var(--gold); }
-@media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid var(--gold-soft); }
+.card { padding: 40px 28px; text-align: center; display: grid; gap: 10px; justify-items: center; }
+.card + .card { border-left: 1px solid var(--gold-soft); }
+.card h3 { font-size: 1.8rem; }
+.card a { font-size: 1.08rem; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-soft); padding-bottom: 2px; overflow-wrap: anywhere; }
+.card a:hover { border-bottom-color: var(--gold); }
+.ig { text-align: center; color: var(--dim); margin: 32px 0 0; }
+@media (max-width: 640px) { .cards { grid-template-columns: 1fr; } .card + .card { border-left: 0; border-top: 1px solid var(--gold-soft); } }
 
 footer { padding-block: 40px; border-top: 1px solid var(--gold-soft); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
@@ -269,25 +267,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <div class="intro"><div class="label">Contact</div><h2>Kindly get in touch</h2><p>Bars, shops, distributors, press and events. Email Joey at <a href="mailto:joey@redeyedspirits.co">joey@redeyedspirits.co</a> or message us on Instagram at <a href="https://www.instagram.com/redeyedspirits/" target="_blank" rel="noopener">@redeyedspirits</a>.</p></div>
-    <form data-contact>
-      <div class="row">
-        <label for="b-name">Name<input id="b-name" name="name" required autocomplete="name"></label>
-        <label for="b-email">Email<input id="b-email" name="email" type="email" required autocomplete="email"></label>
-      </div>
-      <label for="b-topic">Regarding
-        <select id="b-topic" name="topic">
-          <option>General question</option>
-          <option>Carrying our bottles (bars and shops)</option>
-          <option>Distribution</option>
-          <option>Events</option>
-          <option>Press</option>
-        </select>
-      </label>
-      <label for="b-msg">Message<textarea id="b-msg" name="message" required></textarea></label>
-      <div class="send"><button class="btn" type="submit">Send</button></div>
-      <p data-status aria-live="polite"></p>
-    </form>
+    <div class="intro"><div class="label">Contact</div><h2>Kindly get in touch</h2><p>Bars, shops, distributors, press and events. Write to either of us.</p></div>
+    <div class="cards">
+      <div class="card"><span class="label">Master distiller</span><h3>Joey Steadman</h3><a href="mailto:joey@redeyedspirits.co">joey@redeyedspirits.co</a></div>
+      <div class="card"><span class="label">CMO</span><h3>George Tollefson</h3><a href="mailto:george@redeyedspirits.co">george@redeyedspirits.co</a></div>
+    </div>
+    <p class="ig">Or find us on Instagram at <a href="https://www.instagram.com/redeyedspirits/" target="_blank" rel="noopener">@redeyedspirits</a></p>
   </div>
 </section>
 
