@@ -111,7 +111,7 @@ window.RE_CONFIG = {
     connectedCallback() {
       let ok = false;
       try { ok = localStorage.getItem('re-21') === 'yes'; } catch (e) {}
-      if (ok || /[?&]nogate/.test(location.search)) { this.remove(); return; }
+      if (ok) { this.remove(); return; }
       this.innerHTML = `
         <div class="gate" role="dialog" aria-modal="true" aria-labelledby="gate-q" style="position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px));background:var(--gate-bg);color:var(--gate-fg);font-family:var(--gate-font, inherit)">
           <div style="max-width:360px;text-align:center;display:grid;gap:20px;justify-items:center">
