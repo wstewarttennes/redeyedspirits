@@ -22,7 +22,7 @@ window.RE_CONFIG = {
   class ReLogo extends HTMLElement {
     connectedCallback() {
       const plain = this.hasAttribute('plain');
-      const url = new URL(plain ? 'photos/brand/eye-gold.png' : 'photos/brand/logo-gold.png', BASE).href;
+      const url = new URL(plain ? 'photos/brand/eye-gold.png?v=202611052046' : 'photos/brand/logo-gold.png?v=202611052046', BASE).href;
       const ratio = plain ? '275 / 187' : '360 / 377';
       const m = `url('${url}') center / contain no-repeat`;
       this.innerHTML = `<span role="img" aria-label="Red Eyed Spirits" style="display:block;width:100%;aspect-ratio:${ratio};background:currentColor;-webkit-mask:${m};mask:${m}"></span>`;
