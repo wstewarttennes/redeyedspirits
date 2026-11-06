@@ -16,53 +16,16 @@ window.RE_CONFIG = {
   const NS = 'http://www.w3.org/2000/svg';
   let uid = 0;
 
+  // The real logo, drawn as a CSS mask so it takes the surrounding text color
+  // (gold on black, cream on red...). `plain` = the eye mark only.
+  const BASE = (document.currentScript && document.currentScript.src) || location.href;
   class ReLogo extends HTMLElement {
     connectedCallback() {
-      const id = 'rl' + (++uid);
-      const plain = this.hasAttribute('plain'); // eye only, no wreath/text
-      let leaves = '';
-      // laurel: two branches hugging the ring, from bottom center up each side
-      const R = 84;
-      for (const side of [-1, 1]) {
-        leaves += `<path d="M${100 + side * 10} ${100 + R - 1} A${R} ${R} 0 0 ${side > 0 ? 0 : 1} ${(100 + side * R * Math.sin(2.55)).toFixed(1)} ${(100 + R * Math.cos(2.55)).toFixed(1)}" fill="none" stroke="currentColor" stroke-width="2"/>`;
-        for (let i = 0; i < 10; i++) {
-          const th = (16 + i * 13.5) * Math.PI / 180;
-          for (const off of [-1, 1]) {
-            const rr = R + off * 6.5;
-            const x = 100 + side * rr * Math.sin(th + off * 0.04);
-            const y = 100 + rr * Math.cos(th + off * 0.04);
-            const tang = Math.atan2(-Math.sin(th), side * Math.cos(th)) * 180 / Math.PI;
-            const rot = tang + 90 + side * off * -28;
-            leaves += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="3.4" ry="8.5" transform="rotate(${rot.toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="currentColor"/>`;
-          }
-        }
-      }
-      let rays = '';
-      for (let i = 0; i < 9; i++) {
-        const a = (-150 + i * 15) * Math.PI / 180;
-        const x1 = 100 + 30 * Math.cos(a), y1 = 106 + 30 * Math.sin(a);
-        const len = i % 2 ? 9 : 15;
-        const x2 = 100 + (30 + len) * Math.cos(a), y2 = 106 + (30 + len) * Math.sin(a);
-        rays += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
-      }
-      const eye = `
-        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-          <path d="M58 108 Q100 72 142 108 Q100 140 58 108 Z"/>
-          <circle cx="100" cy="107" r="15"/>
-          <path d="M100 107 m-6 0 a6 6 0 1 1 6 6 a3 3 0 1 1 -3 -3"/>
-          ${rays}
-        </g>`;
-      const ring = plain ? '' : `
-        <defs>
-          <path id="${id}t" d="M38 106 A62 62 0 0 1 162 106"/>
-          <path id="${id}b" d="M46 112 A54 54 0 0 0 154 112"/>
-        </defs>
-        <g>${leaves}</g>
-        <text font-family="'IM Fell English', Georgia, serif" font-style="italic" font-size="18" fill="currentColor" text-anchor="middle"><textPath href="#${id}t" startOffset="50%">Red Eyed Spirits</textPath></text>
-        <text font-family="Georgia, serif" font-size="9" letter-spacing="2.5" fill="currentColor" text-anchor="middle"><textPath href="#${id}b" startOffset="50%">LOCAL ALCHEMY</textPath></text>`;
-      const vb = plain ? '50 58 100 90' : '0 0 200 200';
-      // text sits inside the wreath; shift eye down a touch when ring present
-      this.innerHTML = `<svg viewBox="${vb}" role="img" aria-label="Red Eyed Spirits" style="display:block;width:100%;height:auto">${ring}${plain ? eye : `<g transform="translate(100 104) scale(.78) translate(-100 -104)">${eye}</g>`}</svg>`;
+      const plain = this.hasAttribute('plain');
+      const url = new URL(plain ? 'photos/brand/eye-gold.png' : 'photos/brand/logo-gold.png', BASE).href;
+      const ratio = plain ? '275 / 187' : '360 / 377';
+      const m = `url('${url}') center / contain no-repeat`;
+      this.innerHTML = `<span role="img" aria-label="Red Eyed Spirits" style="display:block;width:100%;aspect-ratio:${ratio};background:currentColor;-webkit-mask:${m};mask:${m}"></span>`;
     }
   }
 
