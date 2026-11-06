@@ -141,6 +141,26 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; marg
 .past b { color: var(--bone); font-weight: 400; }
 @media (max-width: 560px) { .invite { padding: 40px 20px; } .invite .meta { grid-template-columns: 1fr; } }
 
+/* ---------- gallery: offset photo grid + lightbox ---------- */
+.gallery { padding-block: 104px; border-top: 1px solid var(--gold-soft); }
+.gallery-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+.gallery-head h2 { font-size: clamp(2.6rem, 6vw, 5rem); }
+.follow { font: 400 .78rem var(--body); letter-spacing: .24em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 15px 26px; text-decoration: none; }
+.follow:hover { background: var(--bone); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.grid button { all: unset; cursor: zoom-in; display: block; overflow: hidden; position: relative; }
+.grid button:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+.grid img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform .6s ease, filter .6s ease; filter: saturate(.92); }
+.grid button:hover img { transform: scale(1.04); filter: saturate(1.05); }
+.grid button:nth-child(3n+2) { margin-top: 48px; }
+@media (prefers-reduced-motion: reduce) { .grid img { transition: none; } }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr 1fr; gap: 10px; } .grid button:nth-child(3n+2) { margin-top: 0; } .grid button:nth-child(even) { margin-top: 32px; } }
+dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: min(92vw, 900px); max-height: 92vh; }
+dialog.lightbox::backdrop { background: rgba(13,12,11,.92); }
+dialog.lightbox img { max-height: 86vh; width: auto; max-width: 100%; margin: 0 auto; }
+dialog.lightbox p { color: var(--dim); text-align: center; font-size: .85rem; margin: 12px 0 0; }
+dialog.lightbox .x { position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); font: 300 2rem var(--body); color: var(--bone); background: none; border: 0; cursor: pointer; line-height: 1; }
+
 /* ---------- contact: two small arches ---------- */
 .contact { background: var(--red); padding-block: 104px; }
 .contact-head { text-align: center; margin-bottom: 48px; }
@@ -169,6 +189,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <ul>
         <li><a href="#spirits">Spirits</a></li>
         <li><a href="#makers">Founders</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#gala">Gala</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -305,6 +326,21 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </div>
 </section>
 
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <div><div class="label">@redeyedspirits</div><h2 style="margin-top:14px">From the still</h2></div>
+      <a class="follow" href="https://www.instagram.com/redeyedspirits/" target="_blank" rel="noopener">Follow on Instagram</a>
+    </div>
+    <div class="grid"><button type="button" data-full="../photos/web/lineup.jpg" aria-label="View larger: Amaro Caramino, Taffel Akvavit and Saffron Rabarbaro Amaro"><img src="../photos/web/lineup.jpg" alt="Amaro Caramino, Taffel Akvavit and Saffron Rabarbaro Amaro" loading="lazy"></button><button type="button" data-full="../photos/web/akvavit.jpg" aria-label="View larger: Taffel Akvavit with a red cocktail"><img src="../photos/web/akvavit.jpg" alt="Taffel Akvavit with a red cocktail" loading="lazy"></button><button type="button" data-full="../photos/web/saffron.jpg" aria-label="View larger: Saffron Rabarbaro Amaro"><img src="../photos/web/saffron.jpg" alt="Saffron Rabarbaro Amaro" loading="lazy"></button><button type="button" data-full="../photos/web/caramino.jpg" aria-label="View larger: Amaro Caramino with a cocktail"><img src="../photos/web/caramino.jpg" alt="Amaro Caramino with a cocktail" loading="lazy"></button><button type="button" data-full="../photos/web/garden.jpg" aria-label="View larger: A trellis tunnel at a New England farm"><img src="../photos/web/garden.jpg" alt="A trellis tunnel at a New England farm" loading="lazy"></button><button type="button" data-full="../photos/web/corn.jpg" aria-label="View larger: White Cap Flint Corn in the field"><img src="../photos/web/corn.jpg" alt="White Cap Flint Corn in the field" loading="lazy"></button></div>
+  </div>
+  <dialog class="lightbox" id="lightbox" aria-label="Photo">
+    <button class="x" type="button" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-cap"></p>
+  </dialog>
+</section>
+
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="contact-head"><re-logo style="display:block;width:170px;margin:0 auto 28px;color:var(--gold)"></re-logo><div class="label">Contact</div><h2 style="margin-top:14px">Kindly get in touch</h2><p>Bars, shops, distributors, press and events. Write to either of us.</p></div>
@@ -321,5 +357,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </footer>
 
 <script src="../shared.js?v=202611052046"></script>
+<script>
+(function () {
+  const d = document.getElementById('lightbox'); if (!d || !d.showModal) return;
+  const img = document.getElementById('lightbox-img'), cap = document.getElementById('lightbox-cap');
+  document.querySelectorAll('.grid button').forEach(b => b.addEventListener('click', () => {
+    const i = b.querySelector('img'); img.src = b.dataset.full; img.alt = i.alt; cap.textContent = i.alt; d.showModal();
+  }));
+  d.addEventListener('click', e => { if (e.target === d || e.target.classList.contains('x')) d.close(); });
+})();
+</script>
 </body>
 </html>
